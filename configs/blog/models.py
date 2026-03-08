@@ -3,6 +3,9 @@ from django.db import models
 class Category(models.Model):
     title = models.CharField(max_length=200, unique=True, verbose_name='Name of Category')
 
+    def __str__(self):
+        return self.title
+
     class Meta:
         verbose_name = 'Category'
         verbose_name_plural = 'Categories'
@@ -18,6 +21,9 @@ class Article(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Price')
     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Category')
 
+    def __str__(self):
+        return self.title
+        
     class Meta:
         verbose_name = 'Article'
         verbose_name_plural = 'Articles'
