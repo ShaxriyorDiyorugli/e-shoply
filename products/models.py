@@ -20,12 +20,12 @@ class Product(models.Model):
     )
     description = models.TextField(verbose_name='Enter a Description')
     image = models.ImageField(upload_to='Products/', verbose_name='Photos')
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Created at')
-    updated_at = models.DateTimeField(auto_now=True, verbose_name='Updated at')
-    view = models.IntegerField(default=0, verbose_name='Views')
+    views_count = models.PositiveIntegerField(default=0, verbose_name='Views')
     price = models.DecimalField(max_digits=15, decimal_places=2, verbose_name='Price')
     is_published = models.BooleanField(default=True, verbose_name='Is Published')
     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Category')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Created at')
+    updated_at = models.DateTimeField(auto_now=True, verbose_name='Updated at')
 
     def __str__(self):
         return self.title
